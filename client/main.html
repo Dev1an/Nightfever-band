@@ -1,0 +1,21 @@
+<head>
+  <title>Nightfever band</title>
+</head>
+
+<template name="mainLayout">
+  <main>
+    {{>Template.dynamic template=content}}
+  </main>
+</template>
+
+<template name="login">
+  <section class="row hero">
+    <div class="small-centered medium-uncentered medium-6 large-7 column">
+      <h1>Nightfever Band</h1>
+      <p>A fun way to organize your nightfever's music team</p>
+    </div>
+    <div class="small-centered medium-uncentered medium-6 large-5 column">
+      {{> atForm}}
+    </div>
+  </section>
+</template>
