@@ -12,13 +12,17 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
+  api.use(['templating', 'momentjs:moment@2.10.6', 'utilities:avatar@0.8.2'], 'client');
   api.use('aldeed:collection2@2.3.3');
 
   // common files
-  api.addFiles('collection.js');
+  api.addFiles(['methods.js', 'collection.js']);
 
   // server files
   api.addFiles('generator.js', 'server');
+
+  // client files
+  api.addFiles(['templates/upcoming.html', 'templates/upcoming.js'], 'client')
 
   api.export('Events')
 });

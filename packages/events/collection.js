@@ -1,5 +1,11 @@
 // Mongo collection
-Events = new Mongo.Collection('events')
+Events = new Mongo.Collection('events', {
+	transform: function(event) {
+		event.attend = function() {Meteor.call('attendToEvent', event._id)}
+		event.leave  = function() {Meteor.call('leaveEvent', event._id)}
+		return event
+	}
+})
 
 // Schema
 Events.attachSchema({
@@ -8,13 +14,7 @@ Events.attachSchema({
 		label: 'Date'
 	},
 	attendees: {
-		type: [Object],
+		type: [String],
 		defaultValue: []
-	},
-	'attendees.$.userId': {
-		type: String
-	},
-	'attendees.$.attending': {
-		type: Boolean
 	}
 })
