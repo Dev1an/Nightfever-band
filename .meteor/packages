@@ -9,11 +9,11 @@ autopublish
 insecure
 kadira:flow-router
 kadira:blaze-layout
-ewall:foundation
-useraccounts:foundation
 accounts-password
 accounts-facebook
 accounts-google
 accounts-ui
-less
 useraccounts:flow-routing
+semantic:ui
+useraccounts:semantic-ui
+flemay:less-autoprefixer
