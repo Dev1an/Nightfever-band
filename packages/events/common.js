@@ -1,10 +1,10 @@
+// Mongo collection
 Events = new Mongo.Collection('events')
 
-EventScheme = new SimpleSchema({
+// Schema
+Events.attachSchema({
 	date: {
 		type: Date,
 		label: 'Date'
 	}
 })
-
-Events.attachSchema(EventScheme)
