@@ -17,6 +17,8 @@ Package.onUse(function(api) {
   api.addFiles('common.js');
 
   api.addFiles('server.js', 'server');
+
+  api.export('Events')
 });
 
 Package.onTest(function(api) {
