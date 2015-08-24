@@ -1,3 +1,8 @@
+Template.upcoming.onCreated(function() {
+	this.subscribe('events')
+	this.subscribe('userData')
+})
+
 Template.upcoming.helpers({
 	events: function() {
 		return Events.find()

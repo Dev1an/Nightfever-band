@@ -19,7 +19,7 @@ Package.onUse(function(api) {
   api.addFiles(['methods.js', 'collection.js']);
 
   // server files
-  api.addFiles('generator.js', 'server');
+  api.addFiles(['generator.js', 'publication.js'], 'server');
 
   // client files
   api.addFiles(['templates/upcoming.html', 'templates/upcoming.js'], 'client')
