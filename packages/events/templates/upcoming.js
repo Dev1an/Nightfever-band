@@ -27,9 +27,6 @@ Template.upcomingEventItem.helpers({
 	attending: attending,
 	buttonState: function() {
 		return attending.apply(this)?"active":""
-	},
-	avatar: function(userId) {
-		return Avatar.getUrl(Meteor.users.findOne(userId))
 	}
 })
 
@@ -41,4 +38,20 @@ Template.upcomingEventItem.events({
 			this.attend()
 		}
 	}
+})
+
+Template.profileImage.helpers({
+	avatar: function(userId) {
+		return Avatar.getUrl(Meteor.users.findOne(userId))
+	},
+	name: function() {
+		var user = Meteor.users.findOne(this.toString())
+		return user ? user.profile.name : "Loading"
+	}
+})
+
+Template.profileImage.onRendered(function() {
+	this.$('img').popup({
+		popup: this.find('.popup'),
+	})
 })
