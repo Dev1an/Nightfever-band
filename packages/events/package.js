@@ -14,9 +14,9 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
   api.use('aldeed:collection2@2.3.3');
 
-  api.addFiles('common.js');
+  api.addFiles('collection.js');
 
-  api.addFiles('server.js', 'server');
+  api.addFiles('generator.js', 'server');
 
   api.export('Events')
 });
