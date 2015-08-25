@@ -46,7 +46,12 @@ Template.profileImage.helpers({
 	},
 	name: function() {
 		var user = Meteor.users.findOne(this.toString())
-		return user ? user.profile.name : "Loading"
+		if (!user)
+			return 'Loading'
+		else if (!user.profile || !user.profile.name)
+			return user.emails[0].address
+		else
+			return user.profile.name
 	}
 })
 
@@ -55,3 +60,5 @@ Template.profileImage.onRendered(function() {
 		popup: this.find('.popup'),
 	})
 })
+
+Avatar.setOptions({defaultImageUrl: '/contacts@3x.png'})
