@@ -10,7 +10,7 @@ Meteor.startup(function() {
 					Instruments.insert({name: instrument})
 				)
 			})
-			InstrumentCategories.insert({category: category, instrumentIds: instrumentIds})
+			InstrumentCategories.insert({name: category, instrumentIds: instrumentIds})
 		})
 	}
 })
