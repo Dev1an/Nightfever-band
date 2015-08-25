@@ -5,7 +5,7 @@ Meteor.publish('events', function() {
 Meteor.publish("userData", function () {
   if (this.userId) {
     return Meteor.users.find({},
-                             {fields: {'services.google.picture': 1, 'services.facebook.id': 1, 'profile.name': 1}});
+                             {fields: {'services.google.picture': 1, 'services.facebook.id': 1, 'profile.name': 1, 'emails': 1}});
   } else {
     this.ready();
   }

@@ -46,19 +46,19 @@ Template.profileImage.helpers({
 	},
 	name: function() {
 		var user = Meteor.users.findOne(this.toString())
-		if (!user)
-			return 'Loading'
-		else if (!user.profile || !user.profile.name)
+		if (user && user.emails && user.emails[0] && user.emails[0].address)
 			return user.emails[0].address
-		else
+		else if (user && user.profile && user.profile.name)
 			return user.profile.name
+		else
+			return 'Loading'
 	}
 })
 
 Template.profileImage.onRendered(function() {
-	this.$('img').popup({
+	this.$('div.clipping').popup({
 		popup: this.find('.popup'),
 	})
 })
 
-Avatar.setOptions({defaultImageUrl: '/contacts.png'})
+Avatar.setOptions({defaultImageUrl: '/contacts@3x.png'})
