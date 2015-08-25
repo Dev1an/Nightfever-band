@@ -61,4 +61,4 @@ Template.profileImage.onRendered(function() {
 	})
 })
 
-Avatar.setOptions({defaultImageUrl: '/contacts@3x.png'})
+Avatar.setOptions({defaultImageUrl: '/contacts.png'})
