@@ -13,9 +13,11 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
   api.use('aldeed:collection2@2.3.3');
+  api.use('templating');
 
   api.addFiles('instruments.js');
   api.addFiles('populate.js', 'server');
+  api.addFiles('templates.html', 'client');
 
   api.export(['Instruments', 'InstrumentCategories'])
 });
