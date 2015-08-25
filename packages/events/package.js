@@ -13,7 +13,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
   api.use(['templating', 'momentjs:moment@2.10.6', 'utilities:avatar@0.8.2'], 'client');
-  api.use('aldeed:collection2@2.3.3');
+  api.use(['aldeed:collection2@2.3.3', 'instruments']);
 
   // common files
   api.addFiles(['methods.js', 'collection.js']);
