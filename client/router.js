@@ -18,3 +18,9 @@ Tracker.autorun(function() {
 	else if (user==undefined && path!='/')
 		FlowRouter.go('/')
 })
+
+FlowRouter.route('/serviceSetup', {
+	action: function() {
+		BlazeLayout.render("mainLayout", {content: "serviceSetup"});
+	}
+});
