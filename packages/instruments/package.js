@@ -17,7 +17,7 @@ Package.onUse(function(api) {
 
   api.addFiles('instruments.js');
   api.addFiles('populate.js', 'server');
-  api.addFiles(['templates/profileSection.html', 'templates/profileSection.js'], 'client');
+  api.addFiles(['templates/instrumentDropdown.html', 'templates/instrumentDropdown.js'], 'client');
 
   api.export(['Instruments', 'InstrumentCategories'])
 });

@@ -1,14 +1,14 @@
-Template.profileInstrumentSection.onCreated(function() {
+Template.instrumentDropdown.onCreated(function() {
 	this.subscribe('instruments')
 	var self = this
 })
 
-Template.profileInstrumentSection.onRendered(function() {
+Template.instrumentDropdown.onRendered(function() {
 	this.component = this.$('.ui.dropdown').dropdown()
 	console.log('component bound')
 })
 
-Template.profileInstrumentSection.helpers({
+Template.instrumentDropdown.helpers({
 	categories: function() {return InstrumentCategories.find()},
 	myInstruments: function() {
 		return Meteor.user().profile.instruments.join(',')
@@ -20,7 +20,6 @@ Template.profileInstrumentSection.helpers({
 			if (user && user.profile && user.profile.instruments)
 				if (Instruments.find({_id: {$in: Meteor.user().profile.instruments}}).count() > 0) 
 					template.component.dropdown('set exactly', user.profile.instruments)
-				
 		}
 	}
 })
@@ -30,7 +29,7 @@ Template.simpleMenuItem.onRendered(function() {
 	context.insertedHandler(context)
 })
 
-Template.profileInstrumentSection.events({
+Template.instrumentDropdown.events({
 	change: function(event, callback) {
 		if (Meteor.user) {
 			Meteor.users.update(Meteor.userId(), {
