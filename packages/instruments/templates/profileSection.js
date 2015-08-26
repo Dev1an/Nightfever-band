@@ -1,13 +1,33 @@
 Template.profileInstrumentSection.onCreated(function() {
 	this.subscribe('instruments')
+	var self = this
 })
 
 Template.profileInstrumentSection.onRendered(function() {
-	this.$('.ui.dropdown').dropdown()
+	this.component = this.$('.ui.dropdown').dropdown()
+	console.log('component bound')
 })
 
 Template.profileInstrumentSection.helpers({
-	categories: function() {return InstrumentCategories.find()}
+	categories: function() {return InstrumentCategories.find()},
+	myInstruments: function() {
+		return Meteor.user().profile.instruments.join(',')
+	},
+	insertedHandler: function() {
+		var template = Template.instance()
+		return function(context) {
+			var user = Meteor.user()
+			if (user && user.profile && user.profile.instruments)
+				if (Instruments.find({_id: {$in: Meteor.user().profile.instruments}}).count() > 0) 
+					template.component.dropdown('set exactly', user.profile.instruments)
+				
+		}
+	}
+})
+
+Template.simpleMenuItem.onRendered(function() {
+	var context = this.data
+	context.insertedHandler(context)
 })
 
 Template.profileInstrumentSection.events({
