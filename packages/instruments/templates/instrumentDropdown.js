@@ -3,23 +3,36 @@ Template.instrumentDropdown.onCreated(function() {
 	var self = this
 })
 
+function updateDropdownValue(template) {
+	var user = Meteor.user()
+	if (user && user.profile && user.profile.instruments) {
+		if (Instruments.find({_id: {$in: Meteor.user().profile.instruments}}).count() > 0) {
+			template.component.dropdown('set exactly', Meteor.user().profile.instruments)
+		} else if (Meteor.user().profile.instruments.length == 0) {
+			template.component.dropdown('clear')
+		}
+	}
+}
+
 Template.instrumentDropdown.onRendered(function() {
-	this.component = this.$('.ui.dropdown').dropdown()
-	console.log('component bound')
+	this.component = this.$('.ui.dropdown')
+	this.input = this.component.find('input')
+	var template = this
+
+	this.autorun(function() {updateDropdownValue(template)})
 })
 
 Template.instrumentDropdown.helpers({
 	categories: function() {return InstrumentCategories.find()},
 	myInstruments: function() {
-		return Meteor.user().profile.instruments.join(',')
+		if(Meteor.user()) {
+			return Meteor.user().profile.instruments.join(',')
+		}
 	},
 	insertedHandler: function() {
 		var template = Template.instance()
 		return function(context) {
-			var user = Meteor.user()
-			if (user && user.profile && user.profile.instruments)
-				if (Instruments.find({_id: {$in: Meteor.user().profile.instruments}}).count() > 0) 
-					template.component.dropdown('set exactly', user.profile.instruments)
+			updateDropdownValue(template)
 		}
 	}
 })
@@ -30,10 +43,11 @@ Template.simpleMenuItem.onRendered(function() {
 })
 
 Template.instrumentDropdown.events({
-	change: function(event, callback) {
+	'uiChange': function(event, callback) {
+		instruments = event.value == '' ? [] : event.value.split(',')
 		if (Meteor.user) {
 			Meteor.users.update(Meteor.userId(), {
-				$set: {'profile.instruments': event.target.value.split(',')}
+				$set: {'profile.instruments': instruments}
 			})
 		}
 	}

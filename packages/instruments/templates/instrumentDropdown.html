@@ -1,17 +1,19 @@
 <template name="instrumentDropdown">
-	<div class="ui multiple selection dropdown">
-		<input name="states" type="hidden">
-		<i class="dropdown icon"></i>
-		<div class="default text">Instruments</div>
-		<div class="menu">
-			{{#each categories}}
-				{{#each instruments}}
-					{{> simpleMenuItem insertedHandler=insertedHandler name=name value=_id}}
+	{{#uiDropdown}}
+		<div class="ui multiple selection dropdown">
+			<input name="states" type="hidden">
+			<i class="dropdown icon"></i>
+			<div class="default text">Instruments</div>
+			<div class="menu">
+				{{#each categories}}
+					{{#each instruments}}
+						{{> simpleMenuItem insertedHandler=insertedHandler name=name value=_id}}
+					{{/each}}
+					<div class="divider"></div>
 				{{/each}}
-				<div class="divider"></div>
-			{{/each}}
+			</div>
 		</div>
-	</div>
+	{{/uiDropdown}}
 </template>
 
 <template name="simpleMenuItem">

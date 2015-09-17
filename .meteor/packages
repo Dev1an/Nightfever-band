@@ -12,10 +12,11 @@ accounts-facebook
 accounts-google
 accounts-ui
 useraccounts:flow-routing
-semantic:ui
 useraccounts:semantic-ui
 flemay:less-autoprefixer
 events
 devian:semantic-checkbox
 meteorhacks:kadira
 instruments
+devian:semantic-dropdown
+semantic:ui

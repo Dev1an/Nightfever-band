@@ -6,6 +6,9 @@ Template.upcoming.onCreated(function() {
 Template.upcoming.helpers({
 	events: function() {
 		return Events.find()
+	},
+	name: function() {
+		return username(Meteor.userId())
 	}
 })
 
@@ -45,13 +48,7 @@ Template.profileImage.helpers({
 		return Avatar.getUrl(Meteor.users.findOne(userId))
 	},
 	name: function() {
-		var user = Meteor.users.findOne(this.toString())
-		if (user && user.emails && user.emails[0] && user.emails[0].address)
-			return user.emails[0].address
-		else if (user && user.profile && user.profile.name)
-			return user.profile.name
-		else
-			return 'Loading'
+		return username(this.toString())
 	}
 })
 
@@ -62,3 +59,13 @@ Template.profileImage.onRendered(function() {
 })
 
 Avatar.setOptions({defaultImageUrl: '/contacts.png'})
+
+username = function(id) {
+	var user = Meteor.users.findOne(id)
+	if (user && user.emails && user.emails[0] && user.emails[0].address)
+		return user.emails[0].address
+	else if (user && user.profile && user.profile.name)
+		return user.profile.name
+	else
+		return 'Loading'
+}
