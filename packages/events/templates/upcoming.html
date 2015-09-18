@@ -7,25 +7,16 @@
 			</nav>
 		</nav>
 
-		<div class="ui stackable column grid">
-			<div class="ten wide column">
-				<div class="ui items">
-					{{#each events}}
-						{{> upcomingEventItem}}
-					{{/each}}
-				</div>
+		<div class="ui segment">
+			<div class="content">
+				<p>Please add some skills to complete your profile</p>
+				{{> instrumentDropdown}}
 			</div>
-			<div class="six wide column">
-				<div class="ui fluid card">
-					<div class="content">
-						<div class="header">{{name}}</div>
-					</div>
-					<div class="content">
-					<p>Please add some skills to complete your profile</p>
-						{{> instrumentDropdown}}
-					</div>
-				</div>
-			</div>
+		</div>
+		<div class="ui items">
+			{{#each events}}
+				{{> upcomingEventItem}}
+			{{/each}}
 		</div>
 
 	</section>
