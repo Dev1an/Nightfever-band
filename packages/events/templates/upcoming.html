@@ -48,10 +48,12 @@
 	<div class="ui clipping avatar image"><img src="{{avatar this}}"></div>
 	<div class="ui popup">
 	  <div class="header">{{name}}</div>
+	  {{#if instrumentsFor this}}
 	  <div class="ui list">
 	  	{{#each instrumentsFor this}}
 	  		<div class="item">{{this.name}}</div>
 	  	{{/each}}
 	  </div>
+	  {{/if}}
 	</div>
 </template>
