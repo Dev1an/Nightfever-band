@@ -18,3 +18,13 @@ Meteor.startup(function() {
 Meteor.publish('instruments', function() {
 	return [Instruments.find(), InstrumentCategories.find()]
 })
+
+var isAdmin = function(userId) {return userId == 'bfyD2jEcprsqEoJ7r'}
+var crudAdmin = {
+	insert: isAdmin,
+	update: isAdmin,
+	remove: isAdmin
+}
+
+Instruments.allow(crudAdmin)
+InstrumentCategories.allow(crudAdmin)
