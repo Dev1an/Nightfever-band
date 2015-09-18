@@ -13,8 +13,16 @@ Events.attachSchema({
 		type: Date,
 		label: 'Date'
 	},
-	attendees: {
-		type: [String],
+	confirmations: {
+		type: [Object],
 		defaultValue: []
+	},
+	'confirmations.$.userId': {
+		label: 'userId',
+		type: SimpleSchema.RegEx.Id
+	},
+	'confirmations.$.attending': {
+		label: 'attending',
+		type: Boolean
 	}
 })

@@ -29,28 +29,33 @@
 <template name="upcomingEventItem">
 	<div class="item event">
 		<div class="content">
-			<a href="#" class="header">{{month}} <span class="gray">{{day}}</span></a>
-			<button class="attend ui {{buttonState}} toggle button">
-				{{#if attending}}
-					Attending
-				{{else}}
-					Attend
+			<a href="#" class="header date">{{month}} <span class="gray">{{day}}</span></a>
+			{{#uiDropdown}}
+				<div class="ui compact floating dropdown basic {{buttonColor}} button">
+					<input type="hidden" name="gender">
+					<div class="default text">Confirm</div>
+					<div class="menu">
+						<div class="item" data-value="true">Going</div>
+						<div class="item" data-value="false">Can't go</div>
+					</div>
+				</div>
+			{{/uiDropdown}}
+			{{#each confirmations}}
+				{{#if this.attending}}
+					{{> profileImage}}
 				{{/if}}
-			</button>
-			{{#each attendees}}
-				{{> profileImage}}
 			{{/each}}
 		</div>
 	</div>	
 </template>
 
 <template name="profileImage">
-	<div class="ui clipping avatar image"><img src="{{avatar this}}"></div>
+	<div class="ui clipping avatar image"><img src="{{avatar userId}}"></div>
 	<div class="ui popup">
 	  <div class="header">{{name}}</div>
-	  {{#if instrumentsFor this}}
+	  {{#if instrumentsFor userId}}
 	  <div class="ui list">
-	  	{{#each instrumentsFor this}}
+	  	{{#each instrumentsFor userId}}
 	  		<div class="item">{{this.name}}</div>
 	  	{{/each}}
 	  </div>

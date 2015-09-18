@@ -18,8 +18,8 @@ Template.upcoming.events({
 	}
 })
 
-function attending() {
-	return _.contains(this.attendees, Meteor.userId())
+function confirmationFor(event) {
+	return _.findWhere(Events.findOne(event._id).confirmations, {userId: Meteor.userId()})
 }
 
 Template.upcomingEventItem.helpers({
@@ -27,20 +27,39 @@ Template.upcomingEventItem.helpers({
 		return moment(this.date).format('MMMM')
 	},
 	day: function() {return moment(this.date).format('Do')},
-	attending: attending,
-	buttonState: function() {
-		return attending.apply(this)?"active":""
+	buttonColor: function() {
+		var confirmation = confirmationFor(this)
+		if (confirmation == undefined) 
+			return ''
+		else 
+			return confirmation.attending ? 'green' : 'red'
 	}
 })
 
 Template.upcomingEventItem.events({
-	'click button.attend.toggle': function() {
-		if (attending.apply(this)) {
-			this.leave()
-		} else {
+	'uiChange': function(event) {
+		if (event.value == 'true') {
 			this.attend()
+		} else {
+			this.leave()
 		}
 	}
+})
+
+Template.upcomingEventItem.onRendered(function() {
+	var confirmationButton = this.$('.ui.dropdown')
+	var template = this;
+	this.autorun(function() {
+		console.log('autoRun')
+		var confirmation = confirmationFor(template.data)
+		if (confirmation != undefined) {
+			if (confirmation.attending === true) {
+				confirmationButton.dropdown('set exactly', 'true')
+			} else if (confirmation.attending === false) {
+				confirmationButton.dropdown('set exactly', 'false')
+			}
+		}
+	})
 })
 
 Template.profileImage.helpers({
@@ -48,7 +67,7 @@ Template.profileImage.helpers({
 		return Avatar.getUrl(Meteor.users.findOne(userId))
 	},
 	name: function() {
-		return username(this.toString())
+		return username(this.userId)
 	}
 })
 
