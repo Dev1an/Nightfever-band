@@ -9,7 +9,11 @@
 
 		<div class="ui segment">
 			<div class="content">
-				<p>Please add some skills to complete your profile</p>
+				{{#if myInstruments}}
+					<p>My instruments</p>
+				{{else}}
+					<p>Please add some skills to complete your profile</p>
+				{{/if}}
 				{{> instrumentDropdown}}
 			</div>
 		</div>

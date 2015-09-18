@@ -32,16 +32,17 @@ Template.instrumentDropdown.onRendered(function() {
 
 Template.instrumentDropdown.helpers({
 	categories: function() {return InstrumentCategories.find()},
-	myInstruments: function() {
-		if(Meteor.user()) {
-			return Meteor.user().profile.instruments.join(',')
-		}
-	},
 	insertedHandler: function() {
 		var template = Template.instance()
 		return function(context) {
 			updateDropdownValue(template)
 		}
+	}
+})
+
+Template.registerHelper('myInstruments', function() {
+	if(Meteor.user()) {
+		return Meteor.user().profile.instruments.join(',')
 	}
 })
 
