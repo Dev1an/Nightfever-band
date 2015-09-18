@@ -1,3 +1,3 @@
 Meteor.publish('events', function() {
-	return Events.find({}, {sort: {date: 1}})
+	return Events.find({date: {$gte: new Date()}}, {sort: {date: 1}})
 })
