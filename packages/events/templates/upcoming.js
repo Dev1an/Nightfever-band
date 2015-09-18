@@ -50,7 +50,6 @@ Template.upcomingEventItem.onRendered(function() {
 	var confirmationButton = this.$('.ui.dropdown')
 	var template = this;
 	this.autorun(function() {
-		console.log('autoRun')
 		var confirmation = confirmationFor(template.data)
 		if (confirmation != undefined) {
 			if (confirmation.attending === true) {
