@@ -19,7 +19,6 @@ Template.instrumentDropdown.onRendered(function() {
 	this.component = this.$('.ui.dropdown')
 	this.input = this.component.find('input')
 	var template = this
-	console.log(template)
 
 	var placeholder = this.$('.default.text').text()
 	this.clearAll = function() {
@@ -41,8 +40,9 @@ Template.instrumentDropdown.helpers({
 })
 
 Template.registerHelper('myInstruments', function() {
-	if(Meteor.user()) {
-		return Meteor.user().profile.instruments.join(',')
+	var user = Meteor.user()
+	if (user && user.profile && user.profile.instruments) {
+		return user.profile.instruments.join(',')
 	}
 })
 
