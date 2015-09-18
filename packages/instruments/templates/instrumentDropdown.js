@@ -6,10 +6,11 @@ Template.instrumentDropdown.onCreated(function() {
 function updateDropdownValue(template) {
 	var user = Meteor.user()
 	if (user && user.profile && user.profile.instruments) {
-		if (Instruments.find({_id: {$in: Meteor.user().profile.instruments}}).count() > 0) {
-			template.component.dropdown('set exactly', Meteor.user().profile.instruments)
-		} else if (Meteor.user().profile.instruments.length == 0) {
-			template.component.dropdown('clear')
+		var userInstruments = user.profile.instruments
+		if (Instruments.find({_id: {$in: userInstruments}}).count() > 0) {
+			template.component.dropdown('set exactly', userInstruments)
+		} else if (userInstruments.length == 0) {
+			template.clearAll()
 		}
 	}
 }
@@ -18,6 +19,13 @@ Template.instrumentDropdown.onRendered(function() {
 	this.component = this.$('.ui.dropdown')
 	this.input = this.component.find('input')
 	var template = this
+	console.log(template)
+
+	var placeholder = this.$('.default.text').text()
+	this.clearAll = function() {
+		template.component.dropdown('clear')
+		template.component.data().moduleDropdown.set.placeholderText(placeholder)
+	}
 
 	this.autorun(function() {updateDropdownValue(template)})
 })

@@ -1,6 +1,6 @@
 <template name="instrumentDropdown">
 	{{#uiDropdown}}
-		<div class="ui multiple selection dropdown">
+		<div class="ui multiple selection search dropdown">
 			<input name="states" type="hidden">
 			<i class="dropdown icon"></i>
 			<div class="default text">Instruments</div>
@@ -9,7 +9,9 @@
 					{{#each instruments}}
 						{{> simpleMenuItem insertedHandler=insertedHandler name=name value=_id}}
 					{{/each}}
-					<div class="divider"></div>
+					{{#if instruments}}
+						<div class="divider"></div>
+					{{/if}}
 				{{/each}}
 			</div>
 		</div>
