@@ -45,6 +45,12 @@ Template.registerHelper('myInstruments', function() {
 		return user.profile.instruments.join(',')
 	}
 })
+Template.registerHelper('instrumentsFor', function(userId) {
+	var user = Meteor.users.findOne(userId)
+	if (user && user.profile && user.profile.instruments) {
+		return Instruments.find({_id: {$in: user.profile.instruments}})
+	}
+})
 
 Template.simpleMenuItem.onRendered(function() {
 	var context = this.data
