@@ -1,2 +1,3 @@
 [submodule "packages/Semantic-UI-Meteor"]
 	path = packages/Semantic-UI-Meteor
+	url = https://github.com/Dev1an/Semantic-UI-Meteor.git
