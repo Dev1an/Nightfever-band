@@ -19,5 +19,4 @@ devian:semantic-checkbox
 meteorhacks:kadira
 instruments
 devian:semantic-dropdown
-semantic:ui
-semantic:ui-data
+devian:semantic-ui

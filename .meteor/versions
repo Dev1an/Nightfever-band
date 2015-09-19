@@ -23,6 +23,8 @@ ddp@1.1.0
 deps@1.0.7
 devian:semantic-checkbox@0.0.1
 devian:semantic-dropdown@0.0.2
+devian:semantic-ui@2.1.4
+devian:semantic-ui-data@2.1.4
 ejson@1.0.6
 email@1.0.6
 events@0.0.1
@@ -72,9 +74,6 @@ reactive-var@1.0.5
 reload@1.1.3
 retry@1.0.3
 routepolicy@1.0.5
-semantic:ui@2.1.4
-semantic:ui-data@2.1.4
-semantic:ui-data-extended@2.1.4
 service-configuration@1.0.4
 session@1.1.0
 sha@1.0.3
