@@ -13,7 +13,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
   api.use('aldeed:collection2@2.3.3');
-  api.use('templating');
+  api.use(['templating', 'permissions', 'alanning:roles@1.2.13', 'ecmascript']);
 
   api.addFiles('instruments.js');
   api.addFiles('populate.js', 'server');
