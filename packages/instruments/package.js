@@ -13,9 +13,9 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
   api.use('aldeed:collection2@2.3.3');
-  api.use(['templating', 'permissions', 'alanning:roles@1.2.13', 'ecmascript']);
+  api.use(['templating', 'orbit:permissions@0.1.1', 'ecmascript']);
 
-  api.addFiles('instruments.js');
+  api.addFiles(['instruments.js', 'permissions.js']);
   api.addFiles('populate.js', 'server');
   api.addFiles(['templates/instrumentDropdown.html', 'templates/instrumentDropdown.js'], 'client');
 

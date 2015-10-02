@@ -21,8 +21,6 @@ devian:semantic-dropdown
 devian:semantic-ui
 sanjo:jasmine
 velocity:html-reporter
-alanning:roles
-permissions
 standard-minifiers
 meteor-base
 mobile-experience

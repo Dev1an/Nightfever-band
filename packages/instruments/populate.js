@@ -19,13 +19,11 @@ Meteor.publish('instruments', function() {
 	return [Instruments.find(), InstrumentCategories.find()]
 })
 
-Roles.addPermission('admin', 'instruments:insert', 'instruments:update', 'instruments:remove')
-
-var crudAdmin = {
-	insert: userId => { return Roles.permissionTo('instruments:insert', userId) },
-	update: userId => { return Roles.permissionTo('instruments:update', userId) },
-	remove: userId => { return Roles.permissionTo('instruments:remove', userId) }
+const crudPermissions = {
+	insert: userId => { return OrbitPermissions.userCan('insert', 'instruments') },
+	update: userId => { return OrbitPermissions.userCan('update', 'instruments') },
+	remove: userId => { return OrbitPermissions.userCan('remove', 'instruments') }
 }
 
-Instruments.allow(crudAdmin)
-InstrumentCategories.allow(crudAdmin)
+Instruments.allow(crudPermissions)
+InstrumentCategories.allow(crudPermissions)
