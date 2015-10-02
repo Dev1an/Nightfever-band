@@ -7,4 +7,9 @@
   <main>
     {{>Template.dynamic template=content}}
   </main>
+  {{#if modal}}
+	  <div class="ui modal active">
+	  	{{>Template.dynamic template=modal}}
+	  </div>
+  {{/if}}
 </template>
