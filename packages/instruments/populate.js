@@ -20,9 +20,9 @@ Meteor.publish('instruments', function() {
 })
 
 const crudPermissions = {
-	insert: userId => { return OrbitPermissions.userCan('insert', 'instruments') },
-	update: userId => { return OrbitPermissions.userCan('update', 'instruments') },
-	remove: userId => { return OrbitPermissions.userCan('remove', 'instruments') }
+	insert: userId => { return OrbitPermissions.userCan('insert', 'instruments', userId) },
+	update: userId => { return OrbitPermissions.userCan('update', 'instruments', userId) },
+	remove: userId => { return OrbitPermissions.userCan('remove', 'instruments', userId) }
 }
 
 Instruments.allow(crudPermissions)

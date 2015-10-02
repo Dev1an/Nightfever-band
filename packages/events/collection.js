@@ -26,3 +26,15 @@ Events.attachSchema({
 		type: Boolean
 	}
 })
+
+const permissions = new OrbitPermissions.Registrar('events')
+
+permissions.definePermission('insert')
+permissions.definePermission('update')
+permissions.definePermission('remove')
+
+Events.allow({
+	insert: userId => OrbitPermissions.userCan('insert', 'events', userId),
+	update: userId => OrbitPermissions.userCan('update', 'events', userId),
+	remove: userId => OrbitPermissions.userCan('remove', 'events', userId)
+})
