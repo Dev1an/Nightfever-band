@@ -1,0 +1,26 @@
+<template name="adminInitialization">
+	<div class="header">
+		Admin initalization
+	</div>
+	<div class="content">
+		<p>This site has no admin user. Please choose one.</p>
+		{{#uiDropdown}}
+		<div class="ui selection dropdown">
+			<input class="user" type="hidden" name="gender">
+			<i class="dropdown icon"></i>
+			<div class="default text">Choose a user</div>
+			<div class="menu">
+			{{#each users}}
+				<div data-value="{{_id}}" class="item">
+					<i class="{{iconFor service}} icon"></i>
+					{{name}}
+				</div>
+			{{/each}}
+			</div>
+		</div>
+		{{/uiDropdown}}
+	</div>
+	<div class="actions">
+		<div class="ui approve primary button">Give admin rights</div>
+	</div>
+</template>

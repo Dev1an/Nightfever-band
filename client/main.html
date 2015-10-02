@@ -4,12 +4,13 @@
 </head>
 
 <template name="mainLayout">
+  {{#if modal}}
+    {{#modalViewer}}
+      {{> Template.dynamic template=modal}}
+    {{/modalViewer}}
+  {{/if}}
+
   <main>
     {{>Template.dynamic template=content}}
   </main>
-  {{#if modal}}
-	  <div class="ui modal active">
-	  	{{>Template.dynamic template=modal}}
-	  </div>
-  {{/if}}
 </template>

@@ -36,3 +36,5 @@ ejson
 spacebars
 check
 ecmascript
+reactive-var
+orbit:permissions
