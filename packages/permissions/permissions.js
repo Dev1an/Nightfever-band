@@ -5,20 +5,22 @@ Permissions = new Mongo.Collection('permissions')
  * @param {String} roleName
  * @param {String} permissionId A name for the permission.
  */
-Roles.addPermission = function(roleName, permissionId) {
+Roles.addPermission = function(roleName, ...permissionId) {
   const roleCursor = Meteor.roles.find({name: roleName})
   
   if (roleCursor.count() < 1) throw new Error(`Role '${roleName}' does not exist`)
   else {
     const role = roleCursor.fetch()[0]
-    if (Permissions.find({_id: permissionId, 'roles.$': role.name}).count() < 1) {
-      if (Permissions.find(permissionId).count() > 0) {
-        Permissions.update(permissionId, {$push: {roles: role.name}})
-      } else {
-        Permissions.insert({
-          _id: permissionId,
-          roles: [role.name]
-        })
+    for (var _id of permissionId){
+      if (Permissions.find({_id, 'roles': role.name}).count() < 1) {
+        if (Permissions.find(_id).count() > 0) {
+          Permissions.update(_id, {$push: {roles: role.name}})
+        } else {
+          Permissions.insert({
+            _id,
+            roles: [role.name]
+          })
+        }
       }
     }
   }

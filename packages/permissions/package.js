@@ -12,7 +12,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.2')
-  api.use(['alanning:roles@1.2.13', 'mongo', 'ecmascript'])
+  api.use(['mongo', 'ecmascript', 'alanning:roles@1.2.13'])
 
   api.addFiles('permissions.js')
   api.addFiles('publication.js', 'server')
