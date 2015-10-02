@@ -4,7 +4,6 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
 kadira:flow-router
 kadira:blaze-layout
 accounts-password
@@ -20,3 +19,21 @@ meteorhacks:kadira
 instruments
 devian:semantic-dropdown
 devian:semantic-ui
+sanjo:jasmine
+velocity:html-reporter
+alanning:roles
+permissions
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
