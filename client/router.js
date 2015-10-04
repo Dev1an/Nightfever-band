@@ -11,6 +11,12 @@ FlowRouter.route('/upcoming', {
 	}
 });
 
+FlowRouter.route('/event/:id', {
+	action: function() {
+		BlazeLayout.render("mainLayout", {content: "eventInfo"});
+	}
+});
+
 Tracker.autorun(function() {
 	const user = Meteor.userId(), route = FlowRouter.getRouteName()
 	if (FlowRouter.current().route !== undefined) {
