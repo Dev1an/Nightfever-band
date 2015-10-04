@@ -1,11 +1,10 @@
 Template.upcoming.onCreated(function() {
 	this.subscribe('events')
 	this.subscribe('instruments')
-	this.hasInstruments = new ReactiveVar(false)
+	this.hasInstruments = new ReactiveVar(true)
 	this.subscribe('userData', ()=> {
 		const profile = Meteor.user().profile;
-		if (profile && profile.instruments && profile.instruments.length > 0)
-			this.hasInstruments.set(true) 
+		this.hasInstruments.set(profile && profile.instruments && profile.instruments.length > 0) 
 	})
 })
 

@@ -1,6 +1,6 @@
 Template.instrumentDropdown.onCreated(function() {
 	this.subscribe('instruments')
-	var self = this
+	this.clearAll = ()=>{}
 })
 
 function updateDropdownValue(template) {
