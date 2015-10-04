@@ -1,4 +1,4 @@
-function dayOfTheWeekOfTheMonthFunction(dayOfTheWeek, weekOfTheMonth) {
+dayOfTheWeekOfTheMonthFunction = function (dayOfTheWeek, weekOfTheMonth) {
 	var weekDayOffset = 6 - dayOfTheWeek
 	var dayOffset = 7 + 7*weekOfTheMonth
 	return function(month) {
