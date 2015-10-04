@@ -3,6 +3,11 @@ Template.upcoming.onCreated(function() {
 	this.subscribe('userData')
 })
 
+// Template.upcoming.onRendered(function() {
+// 	_.findWhere(Meteor.users._connection._subscriptions, {name: 'userData'})
+// 	console.log(Meteor.user())
+// })
+
 Template.upcoming.helpers({
 	events: function() {
 		return Events.find()
