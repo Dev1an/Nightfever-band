@@ -4,8 +4,9 @@ Meteor.methods({
 		return Meteor.users.find({}, {
 			fields: {'profile.name': 1, 'emails.address': 1, services: 1}
 		}).map(user => {
-			var {profile: {name}} = user
-			name = name || user.emails[0].address
+			if (user.profile && user.profile.name != undefined) var {profile: {name}} = user
+			else var name = user.emails[0].address
+			
 			const service = _.intersection(_.keys(user.services), ['facebook', 'google', 'password'])[0]
 			return {name, service, _id: user._id}
 		})
