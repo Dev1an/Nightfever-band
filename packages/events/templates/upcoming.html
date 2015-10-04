@@ -7,16 +7,19 @@
 			</nav>
 		</nav>
 
-		<div class="ui segment">
-			<div class="content">
-				{{#if myInstruments}}
-					<p>My skills</p>
-				{{else}}
-					<p>Please add some skills to complete your profile</p>
-				{{/if}}
-				{{> instrumentDropdown}}
+		{{#unless hasInstruments}}
+			<div class="ui segment">
+				<div class="content">
+					{{#if myInstruments}}
+						<p>My skills</p>
+					{{else}}
+						<p>Please add some skills to complete your profile</p>
+					{{/if}}
+					{{> instrumentDropdown}}
+				</div>
 			</div>
-		</div>
+		{{/unless}}
+
 		<div class="ui items">
 			{{#each events}}
 				{{> upcomingEventItem}}

@@ -1,12 +1,13 @@
 Template.upcoming.onCreated(function() {
 	this.subscribe('events')
-	this.subscribe('userData')
+	this.subscribe('instruments')
+	this.hasInstruments = new ReactiveVar(false)
+	this.subscribe('userData', ()=> {
+		const profile = Meteor.user().profile;
+		if (profile && profile.instruments && profile.instruments.length > 0)
+			this.hasInstruments.set(true) 
+	})
 })
-
-// Template.upcoming.onRendered(function() {
-// 	_.findWhere(Meteor.users._connection._subscriptions, {name: 'userData'})
-// 	console.log(Meteor.user())
-// })
 
 Template.upcoming.helpers({
 	events: function() {
@@ -14,6 +15,9 @@ Template.upcoming.helpers({
 	},
 	name: function() {
 		return username(Meteor.userId())
+	},
+	hasInstruments() {
+		return Template.instance().hasInstruments.get()
 	}
 })
 
