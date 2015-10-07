@@ -12,7 +12,7 @@
 
   <main>
     <section class="ui container">
-      {{> navigationBar}}
+      {{#unless noMenuBar}}{{> navigationBar}}{{/unless}}
 
       {{>Template.dynamic template=content}}
     </section>

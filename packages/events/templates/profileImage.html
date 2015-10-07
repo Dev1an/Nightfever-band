@@ -1,0 +1,11 @@
+<template name="profileImage">
+	<img src="{{avatar userId}}" class="ui avatar image">
+	{{#unless noPopup}}
+	<div class="ui popup">
+	  <div class="header">{{name}}</div>
+	  {{#if instrumentsFor userId}}
+	  	{{> userInstrumentList userId}}
+	  {{/if}}
+	</div>
+	{{/unless}}
+</template>

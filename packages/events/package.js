@@ -24,6 +24,7 @@ Package.onUse(function(api) {
   // client files
   api.addFiles(['templates/upcoming.html', 'templates/upcoming.js'], 'client')
   api.addFiles(['templates/event.html', 'templates/event.js'], 'client')
+  api.addFiles(['templates/profileImage.html', 'templates/profileImage.js'], 'client')
 
   api.export('Events')
   api.export('dayOfTheWeekOfTheMonthFunction')

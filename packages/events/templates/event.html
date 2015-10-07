@@ -1,6 +1,45 @@
 <template name="eventInfo">
+	{{#with event}}
 	<section class="ui container">
-		<h1>These people are coming</h1>
-		<h1>Some people are not able to come</h1>
+		{{#if positive confirmations}}
+			<h4 class="ui header">These people are coming</h4>
+			<div class="ui doubling five column stretched grid">
+				{{#each positive confirmations}}
+				<div class="column">
+					<div class="ui fluid card">
+						<div class="ui content">
+							<div class="header">{{username userId}}</div>
+							<div class="description">
+								{{> userInstrumentList userId}}
+							</div>
+						</div>
+						{{#if isMe userId}}
+							<div class="extra content">
+								<div class="ui basic fluid red leave button">Cancel</div>
+							</div>
+						{{/if}}
+					</div>
+				</div>
+				{{/each}}
+			</div>
+		{{else}}
+			<div class="ui center aligned segment">
+				<h3 class="ui header">Be the first one to attend for nightfever {{format date}}!</h3>
+				<div class="ui primary labeled icon button attend"><i class="add user icon"></i>Attend</div>
+			</div>
+		{{/if}}
+
+		{{#if negative confirmations}}
+			<h4 class="ui header">Some people are not able to come</h4>
+			<div class="ui middle aligned list">
+				{{#each negative confirmations}}
+				<div class="item">
+					{{> profileImage userId=userId noPopup=true}}
+					<div class="content">{{username userId}}</div>
+				</div>
+				{{/each}}
+			</div>
+		{{/if}}
 	</section>
+	{{/with}}
 </template>

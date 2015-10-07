@@ -41,17 +41,3 @@
 		</div>
 	</div>	
 </template>
-
-<template name="profileImage">
-	<div class="ui clipping avatar image"><img src="{{avatar userId}}"></div>
-	<div class="ui popup">
-	  <div class="header">{{name}}</div>
-	  {{#if instrumentsFor userId}}
-	  <div class="ui list">
-	  	{{#each instrumentsFor userId}}
-	  		<div class="item">{{this.name}}</div>
-	  	{{/each}}
-	  </div>
-	  {{/if}}
-	</div>
-</template>

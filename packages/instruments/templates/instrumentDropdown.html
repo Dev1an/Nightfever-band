@@ -21,3 +21,11 @@
 <template name="simpleMenuItem">
 	<div class="item" data-value="{{value}}">{{name}}</div>
 </template>
+
+<template name="userInstrumentList">
+	<div class="ui list">
+		{{#each instrumentsFor this}}
+			<div class="item">{{this.name}}</div>
+		{{/each}}
+	</div>
+</template>

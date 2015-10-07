@@ -3,7 +3,7 @@ mainNavigation = new NavigationSystem()
 FlowRouter.route('/', {
 	name: 'root',
  	action() {
-		BlazeLayout.render("mainLayout", {content: "login"});
+		BlazeLayout.render("mainLayout", {content: "login", noMenuBar: true})
 	}
 });
 
@@ -13,7 +13,7 @@ FlowRouter.route('/upcoming', {
 		BlazeLayout.render("mainLayout", {content: "upcoming"});
 	}
 });
-mainNavigation.addItem({routeName: 'upcoming'})
+mainNavigation.addItem({routeName: 'upcoming', title: 'Upcoming'})
 
 FlowRouter.route('/event/:id', {
 	name: 'event',
@@ -21,7 +21,10 @@ FlowRouter.route('/event/:id', {
 		BlazeLayout.render("mainLayout", {content: "eventInfo"});
 	}
 });
-mainNavigation.addItem({routeName: 'event', unwindRoute: 'upcoming'})
+mainNavigation.addItem({routeName: 'event', unwindRoute: 'upcoming', title: function() {
+	const event = Events.findOne(FlowRouter.getParam('id'))
+	if (event) return moment(event.date).format('MMMM Do')
+}})
 
 Tracker.autorun(function() {
 	const user = Meteor.userId(), route = FlowRouter.getRouteName()
