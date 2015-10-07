@@ -13,7 +13,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
   api.use(['templating', 'momentjs:moment@2.10.6', 'utilities:avatar@0.8.2', 'underscore'], 'client');
-  api.use(['aldeed:collection2@2.3.3', 'instruments', 'orbit:permissions@0.1.1', 'ecmascript']);
+  api.use(['aldeed:collection2@2.3.3', 'instruments', 'orbit:permissions@0.1.1', 'ecmascript', 'kadira:flow-router']);
 
   // common files
   api.addFiles(['methods.js', 'collection.js', 'generator.js']);

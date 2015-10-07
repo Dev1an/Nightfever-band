@@ -22,7 +22,7 @@
 <template name="upcomingEventItem">
 	<div class="item event">
 		<div class="content">
-			<a href="/event/{{_id}}" class="header date">{{month}} <span class="gray">{{day}}</span></a>
+			<a href="{{pathToEvent}}" class="header date">{{month}} <span class="gray">{{day}}</span></a>
 			{{#uiDropdown}}
 				<div class="ui compact floating dropdown basic {{buttonColor}} button">
 					<input type="hidden" name="gender">

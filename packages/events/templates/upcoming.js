@@ -35,6 +35,9 @@ Template.upcomingEventItem.helpers({
 			return ''
 		else 
 			return confirmation.attending ? 'green' : 'red'
+	},
+	pathToEvent() {
+		return FlowRouter.path('event', {id: this._id})
 	}
 })
 
