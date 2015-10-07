@@ -40,3 +40,4 @@ reactive-var
 orbit:permissions
 meteortoys:allthings
 navigation
+momentjs:moment

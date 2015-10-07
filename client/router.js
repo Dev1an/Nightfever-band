@@ -21,7 +21,10 @@ FlowRouter.route('/event/:id', {
 		BlazeLayout.render("mainLayout", {content: "eventInfo"});
 	}
 });
-mainNavigation.addItem({routeName: 'event', unwindRoute: 'upcoming', title: 'Event'})
+mainNavigation.addItem({routeName: 'event', unwindRoute: 'upcoming', title: function() {
+	const event = Events.findOne(FlowRouter.getParam('id'))
+	if (event) return moment(event.date).format('MMMM Do')
+}})
 
 Tracker.autorun(function() {
 	const user = Meteor.userId(), route = FlowRouter.getRouteName()
