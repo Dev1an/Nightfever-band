@@ -9,10 +9,10 @@ Template.upcoming.onCreated(function() {
 })
 
 Template.upcoming.helpers({
-	events: function() {
+	events() {
 		return Events.find()
 	},
-	name: function() {
+	name() {
 		return username(Meteor.userId())
 	},
 	hasInstruments() {
@@ -25,11 +25,11 @@ function confirmationFor(event) {
 }
 
 Template.upcomingEventItem.helpers({
-	month: function() {
+	month() {
 		return moment(this.date).format('MMMM')
 	},
-	day: function() {return moment(this.date).format('Do')},
-	buttonColor: function() {
+	day() {return moment(this.date).format('Do')},
+	buttonColor() {
 		var confirmation = confirmationFor(this)
 		if (confirmation == undefined) 
 			return ''
@@ -39,7 +39,7 @@ Template.upcomingEventItem.helpers({
 })
 
 Template.upcomingEventItem.events({
-	'uiChange': function(event) {
+	uiChange(event) {
 		if (event.value == 'true') {
 			this.attend()
 		} else {
@@ -64,10 +64,10 @@ Template.upcomingEventItem.onRendered(function() {
 })
 
 Template.profileImage.helpers({
-	avatar: function(userId) {
+	avatar(userId) {
 		return Avatar.getUrl(Meteor.users.findOne(userId))
 	},
-	name: function() {
+	name() {
 		return username(this.userId)
 	}
 })
