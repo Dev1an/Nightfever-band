@@ -1,0 +1,27 @@
+<template name="navigationBar">
+	<nav class="ui secondary pointing menu">
+		{{#each items}}
+			{{#if unwindChain}}
+				{{#each beforeLast unwindChain}}
+					<a href="/upcoming" class="item">
+						{{title}}:
+					</a>
+				{{/each}}
+				{{#with last unwindChain}}
+					<a href="/upcoming" class="item active">
+						{{title}}
+					</a>
+				{{/with}}
+			{{else}}
+				<a href="/upcoming" class="item {{#if active}}active{{/if}}">
+					{{title}}
+				</a>
+			{{/if}}
+		{{/each}}
+
+
+		<nav class="right menu">
+			<a class="logout item">Logout</a>
+		</nav>
+	</nav>
+</template>

@@ -20,12 +20,6 @@ Template.upcoming.helpers({
 	}
 })
 
-Template.upcoming.events({
-	'click nav .logout': function() {
-		Meteor.logout()
-	}
-})
-
 function confirmationFor(event) {
 	return _.findWhere(Events.findOne(event._id).confirmations, {userId: Meteor.userId()})
 }

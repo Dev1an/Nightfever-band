@@ -11,6 +11,10 @@
   {{/if}}
 
   <main>
-    {{>Template.dynamic template=content}}
+    <section class="ui container">
+      {{> navigationBar}}
+
+      {{>Template.dynamic template=content}}
+    </section>
   </main>
 </template>

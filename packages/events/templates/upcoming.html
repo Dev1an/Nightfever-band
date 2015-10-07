@@ -1,32 +1,22 @@
 <template name="upcoming">
-	<section class="ui container">
-		<nav class="ui menu">
-			<a class="item">Upcoming</a>
-			<nav class="right menu">
-				<a class="logout item">Logout</a>
-			</nav>
-		</nav>
-
-		{{#unless hasInstruments}}
-			<div class="ui segment">
-				<div class="content">
-					{{#if myInstruments}}
-						<p>My skills</p>
-					{{else}}
-						<p>Please add some skills to complete your profile</p>
-					{{/if}}
-					{{> instrumentDropdown}}
-				</div>
+	{{#unless hasInstruments}}
+		<div class="ui segment">
+			<div class="content">
+				{{#if myInstruments}}
+					<p>My skills</p>
+				{{else}}
+					<p>Please add some skills to complete your profile</p>
+				{{/if}}
+				{{> instrumentDropdown}}
 			</div>
-		{{/unless}}
-
-		<div class="ui items">
-			{{#each events}}
-				{{> upcomingEventItem}}
-			{{/each}}
 		</div>
+	{{/unless}}
 
-	</section>
+	<div class="ui items">
+		{{#each events}}
+			{{> upcomingEventItem}}
+		{{/each}}
+	</div>
 </template>
 
 <template name="upcomingEventItem">
