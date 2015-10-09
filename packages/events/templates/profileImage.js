@@ -1,7 +1,6 @@
+Template.registerHelper('avatarUrl', userId => Avatar.getUrl(Meteor.users.findOne(userId)))
+
 Template.profileImage.helpers({
-	avatar(userId) {
-		return Avatar.getUrl(Meteor.users.findOne(userId))
-	},
 	name() {
 		return username(this.userId)
 	}

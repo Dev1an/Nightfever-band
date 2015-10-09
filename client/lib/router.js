@@ -33,7 +33,7 @@ FlowRouter.route('/profile', {
 		BlazeLayout.render("mainLayout", {content: "profileSettings"});
 	}
 })
-secondaryNavigation.addItem({routeName: 'profile', title: 'Settings'})
+secondaryNavigation.addItem({routeName: 'profile', title: 'Edit'})
 
 Tracker.autorun(function() {
 	const user = Meteor.userId(), route = FlowRouter.getRouteName()
