@@ -1,0 +1,1 @@
+mailgun = new Mailgun(Meteor.settings.mailgun);

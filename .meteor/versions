@@ -44,6 +44,7 @@ facebook@1.2.2
 fastclick@1.0.7
 flemay:less-autoprefixer@1.1.0
 geojson-utils@1.0.4
+gfk:mailgun-api@1.1.0
 google@1.1.6
 gwendall:body-events@0.1.6
 hot-code-push@1.0.0
