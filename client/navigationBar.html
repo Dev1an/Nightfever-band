@@ -1,27 +1,38 @@
 <template name="navigationBar">
 	<nav class="ui secondary pointing menu">
-		{{#each items}}
-			{{#if unwindChain}}
-				{{#each beforeLast unwindChain}}
-					<a href="/upcoming" class="item">
-						{{title}}:
-					</a>
-				{{/each}}
-				{{#with last unwindChain}}
-					<a class="item active">
-						{{title}}
-					</a>
-				{{/with}}
-			{{else}}
-				<a href="/upcoming" class="item {{#if active}}active{{/if}}">
-					{{title}}
-				</a>
-			{{/if}}
-		{{/each}}
-
+		{{> navigationItems mainMenuItems}}
 
 		<nav class="right menu">
-			<a class="logout item">Logout</a>
+			{{#uiDropdown action="hide"}}
+			<div class="ui pointing dropdown item {{#if profileActive}}selectedItem{{/if}}">
+				Profile <i class="dropdown icon"></i>
+				<div class="menu">
+					{{> navigationItems accountMenuItems}}
+					<a class="logout item">Logout</a>
+				</div>
+			</div>
+			{{/uiDropdown}}
 		</nav>
 	</nav>
+</template>
+
+<template name="navigationItems">
+	{{#each this}}
+		{{#if unwindChain}}
+			{{#each beforeLast unwindChain}}
+				<a href="{{pathToRoute}}" class="item">
+					{{title}}:
+				</a>
+			{{/each}}
+			{{#with last unwindChain}}
+				<a class="item active">
+					{{title}}
+				</a>
+			{{/with}}
+		{{else}}
+			<a href="{{pathToRoute}}" class="item {{#if active}}active{{/if}}">
+				{{title}}
+			</a>
+		{{/if}}
+	{{/each}}
 </template>

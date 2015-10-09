@@ -1,4 +1,5 @@
 mainNavigation = new NavigationSystem()
+secondaryNavigation = new NavigationSystem()
 
 FlowRouter.route('/', {
 	name: 'root',
@@ -17,7 +18,7 @@ mainNavigation.addItem({routeName: 'upcoming', title: 'Upcoming'})
 
 FlowRouter.route('/event/:id', {
 	name: 'event',
-	action: function() {
+	action() {
 		BlazeLayout.render("mainLayout", {content: "eventInfo"});
 	}
 });
@@ -25,6 +26,14 @@ mainNavigation.addItem({routeName: 'event', unwindRoute: 'upcoming', title: func
 	const event = Events.findOne(FlowRouter.getParam('id'))
 	if (event) return moment(event.date).format('MMMM Do')
 }})
+
+FlowRouter.route('/profile', {
+	name: 'profile',
+	action() {
+		BlazeLayout.render("mainLayout", {content: "profileSettings"});
+	}
+})
+secondaryNavigation.addItem({routeName: 'profile', title: 'Settings'})
 
 Tracker.autorun(function() {
 	const user = Meteor.userId(), route = FlowRouter.getRouteName()
