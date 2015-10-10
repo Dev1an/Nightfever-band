@@ -1,0 +1,46 @@
+<template name="mailingListSettings">
+	<div class="ui medium header">
+		<i class="inbox icon"></i>
+		<div class="content">
+			Mailing list
+			<div class="sub header">
+				Stay informed on everything concerning the nightfever music band: rehearsals, song selection, ...
+			</div>
+		</div>
+	</div>
+
+	{{#if profile.subscriptionAddress}}
+		You are subscribed with address: {{profile.subscriptionAddress}}
+	{{else}}
+		{{#if multiple verifiedMailAddresses}}
+			{{> subscribeMultiple}}
+		{{else}}
+			{{> subscribeSingle}}
+		{{/if}}
+	{{/if}}
+
+	<div class="ui horizontal divider">or</div>
+
+	{{> addMailAddress}}
+</template>
+
+<template name="addMailAddress">
+	<p>
+		You can couple another email address to your Nightfever band account to use it for the mailinglist.<br/>
+		This can be useful when you already are subscribed to the mailing list (but with a different address) and want to manage your subscription on this website.
+	</p>
+	<div class="ui form">
+		<div class="field {{validator}}">
+			<label>New mail address</label>
+			<div class="two fields">
+				<div class="field"><input type="text"></div>
+				<div class="field {{enableButton}}">
+					<div class="ui fluid labeled icon addMailAddress button">
+						<i class="plus icon"></i>
+						Add mail address
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

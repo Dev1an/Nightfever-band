@@ -43,3 +43,4 @@ navigation
 momentjs:moment
 gfk:mailgun-api
 dburles:collection-helpers
+3stack:match-library

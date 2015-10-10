@@ -1,0 +1,3 @@
+Template.subscribeSingle.events({
+	'click'() {}
+})
