@@ -15,26 +15,33 @@ Template.profileSettings.helpers({
 	}
 })
 
-Template.registerHelper('firstName', userId => {
-	const user = Meteor.users.findOne(userId)
-	if (user) {
-		if (user.services && user.services.google) {
-			return user.services.google.given_name
-		} else if (user.services && user.services.facebook) {
-			return user.services.facebook.first_name
+Meteor.users.helpers({
+	hasGoogleService() {return this.services && this.services.google},
+	hasFacebookService() {return this.services && this.services.facebook},
+	firstName() {
+		if (this.hasGoogleService()) {
+			return this.services.google.given_name
+		} else if (this.hasFacebookService()) {
+			return this.services.facebook.first_name
+		}
+	},
+	lastName() {
+		if (this.hasGoogleService()) {
+			return this.services.google.family_name
+		} else if (this.hasFacebookService()) {
+			return this.services.facebook.last_name
 		}
 	}
 })
 
+Template.registerHelper('firstName', userId => {
+	const user = Meteor.users.findOne(userId)
+	if (user) return user.firstName()
+})
+
 Template.registerHelper('lastName', userId => {
 	const user = Meteor.users.findOne(userId)
-	if (user) {
-		if (hasGoogleService(user)) {
-			return user.services.google.family_name
-		} else if (hasFacebookService(user)) {
-			return user.services.facebook.last_name
-		}
-	}
+	if (user) return user.lastName()
 })
 
 function hasGoogleService(user) {
