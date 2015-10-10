@@ -1,9 +1,11 @@
 <template name="profileSettings">
+	{{#with user}}
+
 	<h2 class="ui center aligned header">
-		<img src="{{avatarUrl userId}}" alt="Profile image" class="ui rounded image">
+		<img src="{{avatarUrl _id}}" alt="Profile image" class="ui rounded image">
 		<div class="content">
-			{{firstName		userId}}
-			{{lastName		userId}}
+			{{firstName}}
+			{{lastName}}
 		</div>
 	</h2>
 
@@ -18,30 +20,9 @@
 	</div>
 	{{> instrumentDropdown fluid=true}}
 
-{{!--
 	<div class="ui hidden divider"></div>
 
-	<div class="ui medium header">
-		<i class="inbox icon"></i>
-		<div class="content">
-			Mailing list
-			<div class="sub header">
-				Stay informed on everything concerning the nightfever music band: rehearsals, song selection, ...
-			</div>
-		</div>
-	</div>
-	<p>
-		{{#uiDropdown}}
-			<div class="ui floating labeled icon dropdown button">
-				<input type="hidden" name="gender">
-				<i class="right arrow icon"></i>
-				<span class="text">Subscribe</span>
-				<div class="menu">
-					<div class="item" data-value="true">damiaan@me.com</div>
-					<div class="item" data-value="false">damiaan.dufaux@gmail.com</div>
-				</div>
-			</div>
-		{{/uiDropdown}}
-	</p>
---}}
+	{{> mailingListSettings}}
+
+	{{/with}}
 </template>

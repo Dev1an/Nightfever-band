@@ -1,0 +1,75 @@
+<template name="profileSettings">
+	{{#with user}}
+
+	<h2 class="ui center aligned header">
+		<img src="{{avatarUrl _id}}" alt="Profile image" class="ui rounded image">
+		<div class="content">
+			{{firstName}}
+			{{lastName}}
+		</div>
+	</h2>
+
+	<div class="ui hidden divider"></div>
+	
+	<div class="ui medium header">
+		<i class="tags icon"></i>
+		<div class="content">
+			Skills
+			<div class="sub header">Add or remove skills</div>
+		</div>
+	</div>
+	{{> instrumentDropdown fluid=true}}
+
+	<div class="ui hidden divider"></div>
+
+	<div class="ui medium header">
+		<i class="inbox icon"></i>
+		<div class="content">
+			Mailing list
+			<div class="sub header">
+				Stay informed on everything concerning the nightfever music band: rehearsals, song selection, ...
+			</div>
+		</div>
+	</div>
+	{{#if profile.subscriptionAddress}}
+		You are subscribed with address: {{profile.subscriptionAddress}}
+	{{else}}
+		{{#if multiple verifiedMailAddresses}}
+			{{#uiDropdown}}
+			<div class="ui floating right labeled icon dropdown button">
+				<i class="right arrow icon"></i>
+				<span class="text">Subscribe</span>
+				<div class="menu">
+					{{#each verifiedMailAddresses}}
+						<div class="item" data-value="false">{{this}}</div>
+					{{/each}}
+				</div>
+				<input type="hidden" name="gender">
+			</div>
+			{{/uiDropdown}}
+		{{else}}
+			<p>
+				<div class="ui primary right labeled icon button">
+					Subscibe {{verifiedMailAddresses.[0]}}
+					<i class="right arrow icon"></i>
+				</div>
+			</p>
+			<div class="ui horizontal divider">or</div>
+			<p>
+				You can couple another email address to your Nightfever band account and use it on the mailinglist.<br/>
+				This can be useful when you already are subscribed to the mailing list (with an address other than {{verifiedMailAddresses.[0]}}) and want to manage your subscription on this website.
+			</p>
+			<div class="ui form">
+				<div class="field">
+					<label>New mail address</label>
+					<div class="two fields">
+						<div class="field"><input type="text"></div>
+						<div class="field"><div class="ui fluid labeled icon button"><i class="plus icon"></i>Add mail address</div></div>
+					</div>
+				</div>
+			</div>
+		{{/if}}
+	{{/if}}
+
+	{{/with}}
+</template>

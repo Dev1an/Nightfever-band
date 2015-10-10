@@ -1,0 +1,14 @@
+<template name="subscribeMultiple">
+	{{#uiDropdown}}
+	<div class="ui floating right labeled icon dropdown button">
+		<i class="right arrow icon"></i>
+		<span class="text">Subscribe</span>
+		<div class="menu">
+			{{#each verifiedMailAddresses}}
+				<div class="item" data-value="false">{{this}}</div>
+			{{/each}}
+		</div>
+		<input type="hidden" name="gender">
+	</div>
+	{{/uiDropdown}}
+</template>

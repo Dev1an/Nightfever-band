@@ -1,0 +1,20 @@
+<template name="mailingListSettings">
+	<div class="ui medium header">
+		<i class="inbox icon"></i>
+		<div class="content">
+			Mailing list
+			<div class="sub header">
+				Stay informed on everything concerning the nightfever music band: rehearsals, song selection, ...
+			</div>
+		</div>
+	</div>
+	{{#if profile.subscriptionAddress}}
+		You are subscribed with address: {{profile.subscriptionAddress}}
+	{{else}}
+		{{#if multiple verifiedMailAddresses}}
+			{{> subscribeMultiple}}
+		{{else}}
+			{{> subscribeSingle}}
+		{{/if}}
+	{{/if}}
+</template>
