@@ -43,4 +43,10 @@
 			</div>
 		</div>
 	</div>
+	{{#if unverifiedMailAddresses}}
+	<div class="ui info message">
+		<div class="header">Verify your email address</div>
+		An email has been sent to {{unverifiedMailAddresses}}. In order to use your new mail address, follow the steps described in the mail.
+	</div>
+	{{/if}}
 </template>

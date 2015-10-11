@@ -23,5 +23,11 @@ Meteor.users.helpers({
 		if (this.hasGoogleService())   verifiedAdresses.push(this.services.google.email)
 		if (this.hasFacebookService()) verifiedAdresses.push(this.services.facebook.email)
 		return verifiedAdresses
+	},
+	unverifiedMailAddresses() {
+		return _.reduce(this.emails, (filteredList, mail) => {
+			if (!mail.verified) filteredList.push(mail.address)
+			return filteredList
+		}, [])
 	}
 })
