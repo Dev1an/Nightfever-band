@@ -1,3 +1,7 @@
 Meteor.publish('events', function() {
-	return Events.find({date: {$gte: new Date()}}, {sort: {date: 1}})
+	var today = new Date()
+	today.setHours(0)
+	today.setMinutes(0)
+	today.setSeconds(0)
+	return Events.find({date: {$gte: today}}, {sort: {date: 1}})
 })
