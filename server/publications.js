@@ -14,7 +14,8 @@ Meteor.publish("userData", function () {
 
     	'profile.name': 1,
 
-    	'emails': 1
+    	'emails': 1,
+      'subscriptionAddress': 1
     }});
   } else {
     this.ready();
