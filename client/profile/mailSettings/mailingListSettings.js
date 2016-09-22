@@ -17,13 +17,13 @@ Template.addMailAddress.helpers({
 	}
 })
 
-Template.addMailAddress.events({
-	'click .addMailAddress.button'(event, template) {
-		Meteor.call('addMailAddress', template.emailField.value)
-	},
-	'input input'(event, template) {
-		const mailAddress = template.emailField.value
-		template.validAddress.set(Match.test(mailAddress, MatchLib.EmailAddress))
-		template.emailAddress.set(mailAddress)
-	}
-})
+// Template.addMailAddress.events({
+// 	'click .addMailAddress.button'(event, template) {
+// 		Meteor.call('addMailAddress', template.emailField.value)
+// 	},
+// 	'input input'(event, template) {
+// 		const mailAddress = template.emailField.value
+// 		template.validAddress.set(Match.test(mailAddress, MatchLib.EmailAddress))
+// 		template.emailAddress.set(mailAddress)
+// 	}
+// })
