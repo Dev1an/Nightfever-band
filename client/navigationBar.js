@@ -25,5 +25,9 @@ Template.navigationItems.helpers({
 	},
 	pathToRoute() {
 		return FlowRouter.path(this.routeName)
+	},
+	unwindable(element) {
+		console.log(element)
+		return false
 	}
 })

@@ -1,5 +1,5 @@
 Template.eventInfo.onCreated(function() {
-	this.subscribe('events')
+	this.autorun(() => this.subscribe('event', FlowRouter.getParam('id')))
 	this.subscribe('instruments')
 	this.subscribe('userData')
 })

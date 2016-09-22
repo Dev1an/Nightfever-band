@@ -4,6 +4,10 @@ Meteor.publish('events', function() {
 	today.setMinutes(0)
 	today.setSeconds(0)
 	return Events.find({date: {$gte: today}}, {sort: {date: 1}})
+}),
+
+Meteor.publish('event', function(id) {
+	return Events.find(id)
 })
 
 Meteor.publish('events.past', function() {

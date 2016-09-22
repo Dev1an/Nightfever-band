@@ -18,7 +18,7 @@
 
 <template name="navigationItems">
 	{{#each this}}
-		{{#if unwindChain}}
+		{{#if unwindable this}}
 			{{#each beforeLast unwindChain}}
 				<a href="{{pathToRoute}}" class="item">
 					{{title}}:
