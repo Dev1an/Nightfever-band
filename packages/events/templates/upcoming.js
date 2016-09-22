@@ -1,8 +1,8 @@
 Template.upcoming.onCreated(function() {
-	Meteor.subscribe('events')
-	Meteor.subscribe('instruments')
+	Tracker.autorun(() => this.subscribe(FlowRouter.getRouteName() == 'past' ? 'events.past' : 'events'))
+	this.subscribe('instruments')
 	this.hasInstruments = new ReactiveVar(true)
-	Meteor.subscribe('userData', ()=> {
+	this.subscribe('userData', ()=> {
 		const profile = Meteor.user().profile;
 		this.hasInstruments.set(profile && profile.instruments && profile.instruments.length > 0) 
 	})

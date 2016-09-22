@@ -16,6 +16,14 @@ FlowRouter.route('/upcoming', {
 });
 mainNavigation.addItem({routeName: 'upcoming', title: 'Upcoming'})
 
+FlowRouter.route('/past', {
+	name: 'past',
+	action() {
+		BlazeLayout.render("mainLayout", {content: "upcoming"});
+	}
+});
+mainNavigation.addItem({routeName: 'past', title: 'Past'})
+
 FlowRouter.route('/event/:id', {
 	name: 'event',
 	action() {
