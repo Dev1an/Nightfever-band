@@ -1,6 +1,25 @@
 <template name="navigationBar">
 	<nav class="ui secondary pointing menu">
-		{{> navigationItems mainMenuItems}}
+		{{#if isActive "upcoming"}}
+			<a href="/upcoming" class="item active">Upcoming</a>
+		{{else}}
+			{{#if isUpcomingEvent true}}
+				<a href="/upcoming" class="item">Upcoming: </a>
+				<a class="active item">{{eventTitle}}</a>
+			{{else}}
+				<a href="/upcoming" class="item">Upcoming</a>
+			{{/if}}
+		{{/if}}
+		{{#if isActive "past"}}
+			<a href="/past" class="item active">Past</a>
+		{{else}}
+			{{#if isUpcomingEvent false}}
+				<a href="/past" class="item">Past: </a>
+				<a class="active item">{{eventTitle}}</a>
+			{{else}}
+				<a href="/past" class="item">Past</a>
+			{{/if}}
+		{{/if}}
 
 		<nav class="right menu">
 			{{#uiDropdown action="hide"}}
@@ -18,7 +37,7 @@
 
 <template name="navigationItems">
 	{{#each this}}
-		{{#if unwindable this}}
+		{{#if unwindChain}}
 			{{#each beforeLast unwindChain}}
 				<a href="{{pathToRoute}}" class="item">
 					{{title}}:

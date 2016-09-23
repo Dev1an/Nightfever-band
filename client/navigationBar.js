@@ -5,14 +5,31 @@ Template.navigationBar.events({
 })
 
 Template.navigationBar.helpers({
-	mainMenuItems() {
-		return mainNavigation.topLevelItems()
-	},
 	accountMenuItems() {
 		return secondaryNavigation.topLevelItems()
 	},
 	profileActive() {
 		return FlowRouter.getRouteName() == 'profile'
+	},
+	isActive(item) {
+		return FlowRouter.getRouteName() == item
+	},
+	eventTitle() {
+		const event = Events.findOne(FlowRouter.getParam('id'))
+		if (event) return moment(event.date).format('MMMM Do')
+	},
+	isUpcomingEvent(upcoming) {
+		if (FlowRouter.getRouteName() == 'event') {
+			const event = Events.findOne(FlowRouter.getParam('id'))
+			if (typeof event != "undefined") {
+				var today = new Date()
+				today.setHours(0)
+				today.setMinutes(0)
+				today.setSeconds(0)
+				return upcoming ? event.date > today : event.date <= today
+			}
+		}
+		return false
 	}
 })
 
@@ -25,9 +42,5 @@ Template.navigationItems.helpers({
 	},
 	pathToRoute() {
 		return FlowRouter.path(this.routeName)
-	},
-	unwindable(element) {
-		console.log(element)
-		return false
 	}
 })

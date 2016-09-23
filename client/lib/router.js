@@ -1,4 +1,3 @@
-mainNavigation = new NavigationSystem()
 secondaryNavigation = new NavigationSystem()
 
 FlowRouter.route('/', {
@@ -14,7 +13,6 @@ FlowRouter.route('/upcoming', {
 		BlazeLayout.render("mainLayout", {content: "upcoming"});
 	}
 });
-mainNavigation.addItem({routeName: 'upcoming', title: 'Upcoming'})
 
 FlowRouter.route('/past', {
 	name: 'past',
@@ -22,7 +20,6 @@ FlowRouter.route('/past', {
 		BlazeLayout.render("mainLayout", {content: "upcoming"});
 	}
 });
-mainNavigation.addItem({routeName: 'past', title: 'Past'})
 
 FlowRouter.route('/event/:id', {
 	name: 'event',
@@ -30,10 +27,6 @@ FlowRouter.route('/event/:id', {
 		BlazeLayout.render("mainLayout", {content: "eventInfo"});
 	}
 });
-mainNavigation.addItem({routeName: 'event', unwindRoute: 'upcoming', title: function() {
-	const event = Events.findOne(FlowRouter.getParam('id'))
-	if (event) return moment(event.date).format('MMMM Do')
-}})
 
 FlowRouter.route('/profile', {
 	name: 'profile',
