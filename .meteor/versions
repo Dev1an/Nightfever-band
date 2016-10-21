@@ -34,6 +34,7 @@ ddp-common@1.2.6
 ddp-rate-limiter@1.0.5
 ddp-server@1.3.10_1
 deps@1.0.12
+devian:navigation@0.0.5
 devian:semantic-checkbox@0.0.1
 devian:semantic-dropdown@0.0.2
 devian:semantic-ui@2.2.1
@@ -101,7 +102,6 @@ mongo-id@1.0.5
 mongo-livedata@1.0.12
 msavin:jetsetter@2.0.0
 msavin:mongol@2.0.1
-navigation@0.0.1
 npm-bcrypt@0.9.1_1
 npm-mongo@2.2.10_1
 oauth@1.1.11

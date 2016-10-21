@@ -1,32 +1,18 @@
 <template name="navigationBar">
 	<nav class="ui secondary pointing menu">
-		{{#if isActive "upcoming"}}
-			<a href="/upcoming" class="item active">Upcoming</a>
-		{{else}}
-			{{#if isUpcomingEvent true}}
-				<a href="/upcoming" class="item">Upcoming: </a>
-				<a class="active item">{{eventTitle}}</a>
-			{{else}}
-				<a href="/upcoming" class="item">Upcoming</a>
-			{{/if}}
-		{{/if}}
-		{{#if isActive "past"}}
-			<a href="/past" class="item active">Past</a>
-		{{else}}
-			{{#if isUpcomingEvent false}}
-				<a href="/past" class="item">Past: </a>
-				<a class="active item">{{eventTitle}}</a>
-			{{else}}
-				<a href="/past" class="item">Past</a>
-			{{/if}}
-		{{/if}}
+        {{#each mainMenu.items}}
+            {{> navigationItem}}
+            {{#if showEvent this}}
+                {{> navigationItem event}}
+            {{/if}}
+        {{/each}}
 
 		<nav class="right menu">
 			{{#uiDropdown action="hide"}}
 			<div class="ui pointing dropdown item {{#if profileActive}}selectedItem{{/if}}">
 				Profile <i class="dropdown icon"></i>
 				<div class="menu">
-					{{> navigationItems accountMenuItems}}
+					{{> navigationItems accountMenu}}
 					<a class="logout item">Logout</a>
 				</div>
 			</div>
@@ -36,22 +22,13 @@
 </template>
 
 <template name="navigationItems">
-	{{#each this}}
-		{{#if unwindChain}}
-			{{#each beforeLast unwindChain}}
-				<a href="{{pathToRoute}}" class="item">
-					{{title}}:
-				</a>
-			{{/each}}
-			{{#with last unwindChain}}
-				<a class="item active">
-					{{title}}
-				</a>
-			{{/with}}
-		{{else}}
-			<a href="{{pathToRoute}}" class="item {{#if active}}active{{/if}}">
-				{{title}}
-			</a>
-		{{/if}}
+	{{#each items}}
+		{{> navigationItem}}
 	{{/each}}
+</template>
+
+<template name="navigationItem">
+    <a class="item{{#if isActive}} active{{/if}}">
+        {{title}}
+    </a>
 </template>

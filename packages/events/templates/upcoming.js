@@ -1,5 +1,5 @@
 Template.upcoming.onCreated(function() {
-	this.autorun(() => this.subscribe(FlowRouter.getRouteName() == 'past' ? 'events.past' : 'events'))
+	this.autorun(() => this.subscribe(FlowRouter.getRouteName() == 'Past' ? 'events.past' : 'events'))
 	this.subscribe('instruments')
 	this.hasInstruments = new ReactiveVar(true)
 	this.subscribe('userData', ()=> {
