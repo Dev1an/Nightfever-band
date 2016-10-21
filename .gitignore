@@ -3,3 +3,4 @@ client/lib/semantic-ui/
 settings.json
 .idea
 .DS_Store
+/node_modules
