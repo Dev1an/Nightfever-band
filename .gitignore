@@ -2,3 +2,4 @@ client/lib/semantic-ui/
 !client/lib/semantic-ui/custom.semantic.json
 settings.json
 .idea
+.DS_Store
